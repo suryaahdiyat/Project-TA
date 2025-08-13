@@ -100,10 +100,10 @@ class ScheduleController extends Controller
             "theme_view_id" => $validatedData['theme_view_id']
         ]);
 
-        // if ($couple) {
-        //     Mail::to($couple->groom_email)->send(new ScheduleNotification($schedule));
-        //     Mail::to($couple->bride_email)->send(new ScheduleNotification($schedule));
-        // }
+        if ($couple) {
+            Mail::to($couple->groom_email)->send(new ScheduleNotification($schedule));
+            Mail::to($couple->bride_email)->send(new ScheduleNotification($schedule));
+        }
 
         // mengisi data jadwal sibuk penghulu
         $penghulu = User::findOrFail($validatedData['user_id']);
@@ -216,10 +216,10 @@ class ScheduleController extends Controller
         $schedule->update($validatedData);
 
         // Kirim email hanya jika tanggal/waktu/tempat berubah/penghulu
-        // if ($shouldNotify) {
-        //     Mail::to($couple->groom_email)->send(new ScheduleUpdatedMail($schedule));
-        //     Mail::to($couple->bride_email)->send(new ScheduleUpdatedMail($schedule));
-        // }
+        if ($shouldNotify) {
+            Mail::to($couple->groom_email)->send(new ScheduleUpdatedMail($schedule));
+            Mail::to($couple->bride_email)->send(new ScheduleUpdatedMail($schedule));
+        }
 
         return redirect('/schedule')->with('success', 'Berhasil mengupdate data jadwal');
     }
