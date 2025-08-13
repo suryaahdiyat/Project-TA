@@ -1,0 +1,6 @@
+gunakan perintah php artisan storage:link untuk menghubungkan file, serta pastikan tambahkan FILESYSTEM_DISK=public di env.
+//gunakan perintah php artisan schedule:work untuk menjalankan schedule
+gunakan perintah php artisan db:seed AdminTableSeeder untuk menambahkan default user untuk admin
+php artisan serve --host=0.0.0.0 --port=8000
+
+app password KUA anjir pasar gjzo zzeo enns mhiv
